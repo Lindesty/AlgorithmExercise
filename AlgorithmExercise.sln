@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmExercise", "AlgorithmExercise\AlgorithmExercise.csproj", "{5C3337F4-427F-4AAD-9731-A816F34F16C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function", "Exercise\Function.csproj", "{2094A148-542F-4A10-9C3D-ACCB03B48E14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C3337F4-427F-4AAD-9731-A816F34F16C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3337F4-427F-4AAD-9731-A816F34F16C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3337F4-427F-4AAD-9731-A816F34F16C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3337F4-427F-4AAD-9731-A816F34F16C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2094A148-542F-4A10-9C3D-ACCB03B48E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2094A148-542F-4A10-9C3D-ACCB03B48E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2094A148-542F-4A10-9C3D-ACCB03B48E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2094A148-542F-4A10-9C3D-ACCB03B48E14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9ECFBCE7-05EB-4C25-B94A-CEE1BEDD4C65}
+	EndGlobalSection
+EndGlobal
