@@ -23,8 +23,6 @@ public class AvlTree<T> : BST<T>
             else
             {
                 //恢复平衡
-
-
                 Rebalance(node);
                 //整棵树恢复平衡
                 break;
