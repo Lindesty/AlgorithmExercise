@@ -5,15 +5,15 @@ using System.Text;
 
 namespace Function.Dependency.Tree
 {
-    public class Bst<T> : BinaryTree<T>, BinaryTreeInfo
+    public class BST<T> : BinaryTree<T>, BinaryTreeInfo
     {
-        public Bst(IComparer<T>? comparator) : base()
+        public BST(IComparer<T>? comparator) : base()
         {
             _size = 0;
             _comparator = comparator!;
         }
 
-        public Bst() : this(null)
+        public BST() : this(null)
         {
         }
 
@@ -59,18 +59,19 @@ namespace Function.Dependency.Tree
             ElementNotNullCheck(element);
             if (_root == null)
             {
-                _root = new TreeNode<T>(element, null!);
+                _root = CreateNode(element, null!);
                 _size++;
+                AfterAdd(_root);
                 return;
             }
 
             int cmp = 0;
             TreeNode<T> currentTreeNode = _root;
-            TreeNode<T> finalTreeNode = _root;
+            TreeNode<T> parentNode = _root;
             while (currentTreeNode != null)
             {
                 cmp = Compare(currentTreeNode.Value, element);
-                finalTreeNode = currentTreeNode;
+                parentNode = currentTreeNode;
                 if (cmp < 0) // currentTreeNode.Value < element
                 {
                     currentTreeNode = currentTreeNode.Right;
@@ -86,15 +87,16 @@ namespace Function.Dependency.Tree
                 }
             }
 
+            TreeNode<T> newNode = CreateNode(element, parentNode);
             if (cmp < 0)
             {
-                finalTreeNode.Right = new TreeNode<T>(element, finalTreeNode);
+                parentNode.Right = newNode;
             }
             else
             {
-                finalTreeNode.Left = new TreeNode<T>(element, finalTreeNode);
+                parentNode.Left = newNode;
             }
-
+            AfterAdd(newNode);
             _size++;
         }
 
@@ -210,7 +212,7 @@ namespace Function.Dependency.Tree
         {
             if (_root is null)
             {
-                return null;
+                return null!;
             }
 
             TreeNode<T> node = _root;
@@ -231,7 +233,7 @@ namespace Function.Dependency.Tree
                 }
             }
 
-            return node;
+            return node!;
         }
 
         public bool Contains(T element)
@@ -257,6 +259,19 @@ namespace Function.Dependency.Tree
             return false;
         }
 
+        /// <summary>
+        /// 添加节点后的操作
+        /// </summary>
+        /// <param name="newNode"></param>
+        protected virtual void AfterAdd(TreeNode<T> newNode)
+        {
+
+        }
+
+        protected virtual TreeNode<T> CreateNode(T value, TreeNode<T> parent)
+        {
+            return new TreeNode<T>(value, parent);
+        }
         private void ElementNotNullCheck(T element)
         {
             if (element == null)

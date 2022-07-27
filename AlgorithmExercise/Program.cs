@@ -16,7 +16,7 @@ namespace AlgorithmExercise
     {
         public static void Main(string[] args)
         {
-            Test21();
+            Test22();
         }
 
         public static void Test01()
@@ -129,7 +129,7 @@ namespace AlgorithmExercise
         /// </summary>
         public static void Test06()
         {
-            Bst<int> set = new Bst<int>();
+            BST<int> set = new BST<int>();
             foreach (int i in new int[] {50, 25, 75, 12, 36, 64, 88})
             {
                 set.Add(i);
@@ -193,7 +193,7 @@ namespace AlgorithmExercise
         ///  </summary>
         private static void Test20()
         {
-            Bst<int> bst = new Bst<int>();
+            BST<int> bst = new BST<int>();
             foreach (int i in new int[] {5, 3, 7, 2, 4, 6, 8, 1, 9})
             {
                 bst.Add(i);
@@ -210,7 +210,7 @@ namespace AlgorithmExercise
         /// </summary>
         private static void Test21()
         {
-            Bst<int> bst = new Bst<int>();
+            BST<int> bst = new BST<int>();
             var integerList = new int[] {5, 3, 7, 2, 4, 6, 8, 1, 9};
             integerList.GetEnumerator();
             foreach (int i in integerList)
@@ -243,9 +243,22 @@ namespace AlgorithmExercise
         /// <summary>
         /// AVLTree
         /// </summary>
-        public void Test22()
+        public static void Test22()
         {
-            AvlTree<int> tree = new ();
+            
+            AvlTree<int> tree = new AvlTree<int>(Comparer<int>.Default);
+            InOrderPrinter printer = new InOrderPrinter(tree);
+            
+            tree.Add(0);
+            tree.Add(3);
+            Console.WriteLine(printer.PrintString());
+            tree.Add(4);
+            Console.WriteLine(printer.PrintString());
+            var node = tree.GetNode(3);
+            Console.WriteLine(tree.IsBalanced(node));
+
         }
+
+
     }
 }

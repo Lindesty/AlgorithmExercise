@@ -6,7 +6,7 @@ namespace Function.Dependency.Tree;
 public class BinaryTree<T>:IEnumerable<T>
 {
     protected int _size;
-    public virtual int Height => GetHeight(_root!);
+    public virtual int Height => (_root!.Height);
     protected TreeNode<T>? _root;
     public int Size => _size;
     public TreeNode<T>? Root => _root;
@@ -17,18 +17,12 @@ public class BinaryTree<T>:IEnumerable<T>
         {
             return;
         }
-        _root = BinaryTree<T>.CreateTree(list.ToArray());
+        _root = CreateTree(list.ToArray());
     }
 
     public BinaryTree() : this(null)
     {
         _root = null;
-    }
-
-    private int GetHeight(TreeNode<T> treeNode)
-    {
-        if (treeNode == null!) return 0;
-        return Math.Max(GetHeight(treeNode.Left), GetHeight(treeNode.Right)) + 1;
     }
 
     /// <summary>
@@ -211,7 +205,7 @@ public class BinaryTree<T>:IEnumerable<T>
             if (level == 0)
             {
                 heigh++;
-                if (heigh == GetHeight(_root))
+                if (heigh == (_root.Height))
                 {
                     break;
                 }
@@ -330,10 +324,27 @@ public class TreeNode<T>
     public TreeNode<T> Left;
     public TreeNode<T> Right;
     public TreeNode<T> Parent;
+    
+    public virtual int Height
+    {
+        get
+        {
+            return GetHeight(this);
+        }
+        set
+        {
+            
+        }
+    }
 
     public bool IsLeaf => Left == null! && Right == null!;
     public bool HasTwoChildren => Left != null! && Right != null!;
 
+    private int GetHeight(TreeNode<T> treeNode)
+    {
+        if (treeNode == null!) return 0;
+        return Math.Max(GetHeight(treeNode.Left), GetHeight(treeNode.Right)) + 1;
+    }
     public TreeNode(T value, TreeNode<T> parent)
     {
         Value = value;
